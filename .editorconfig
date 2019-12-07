@@ -1,0 +1,41 @@
+############################################################################### 
+# .editorconfig 
+############################################################################### 
+ 
+# Configure your IDE 
+ 
+# Documentation: 
+#   http://editorconfig.org/ 
+ 
+# top-most EditorConfig file 
+root = true 
+ 
+# Configurations for all files 
+#   - use UTF-8 encoding 
+#   - use linux (LF) end-of-line character 
+#   - always insert a new line at end of file 
+[*] 
+charset                  = utf-8 
+end_of_line              = lf 
+indent_size              = 2 
+indent_style             = space 
+insert_final_newline     = true 
+trim_trailing_whitespace = true 
+ 
+# Configurations for markdown files 
+[*.md] 
+indent_size = 4 
+ 
+# Configurations for python files 
+[*.py] 
+indent_size = 4 
+ 
+# Configuration for certificate files 
+[*.{pem,pem.tpl}] 
+insert_final_newline     = false 
+ 
+# Configuration for certificate files 
+[*.tpl] 
+insert_final_newline     = false 
+ 
+###############################################################################
