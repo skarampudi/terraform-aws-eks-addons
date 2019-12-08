@@ -99,10 +99,4 @@ data "helm_repository" "incubator" {
     name = "incubator" 
     url  = "https://kubernetes-charts-incubator.storage.googleapis.com" 
 } 
-
-# Istio helm chart repository
-data "helm_repository" "istio" { 
-  name = "istio" 
-  url  = "https://storage.googleapis.com/istio-release/releases/${var.istio_version}/charts" 
-} 
  
