@@ -1,7 +1,7 @@
 # Create service account for tiller
 resource "kubernetes_service_account" "tiller" { 
   metadata { 
-    name = "tiller" 
+    name      = "tiller" 
     namespace = "kube-system" 
   } 
 } 
@@ -16,14 +16,14 @@ resource "kubernetes_cluster_role_binding" "tiller" {
  
   role_ref { 
       api_group = "rbac.authorization.k8s.io" 
-      kind = "ClusterRole" 
-      name = "cluster-admin" 
+      kind      = "ClusterRole" 
+      name      = "cluster-admin" 
   } 
  
   subject { 
       api_group = "" 
-      kind = "ServiceAccount" 
-      name = "tiller" 
+      kind      = "ServiceAccount" 
+      name      = "tiller" 
       namespace = "kube-system" 
   } 
 } 
