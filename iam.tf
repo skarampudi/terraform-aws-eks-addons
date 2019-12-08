@@ -51,7 +51,7 @@ resource "aws_iam_role_policy" "aws-alb-ingress-controller" {
   name = "${var.cluster_name}-aws-alb-ingress-controller-sa" 
   role = aws_iam_role.aws-alb-ingress-controller.id 
  
-  policy = <<EOF 
+  policy = <<EOF
 { 
   "Version": "2012-10-17", 
   "Statement": [ 
@@ -170,7 +170,7 @@ resource "aws_iam_role_policy" "aws-alb-ingress-controller" {
     } 
   ] 
 } 
-EOF 
+EOF
 } 
  
 #  IAM role for external dns service account 
@@ -184,7 +184,7 @@ resource "aws_iam_role_policy" "external-dns" {
   name = "${var.cluster_name}-external-dns-sa" 
   role = aws_iam_role.external-dns.id 
  
-  policy = <<EOF 
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -209,5 +209,5 @@ resource "aws_iam_role_policy" "external-dns" {
     }
   ]
 } 
-EOF 
-} 
+EOF
+}
