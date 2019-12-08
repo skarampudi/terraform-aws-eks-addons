@@ -1,5 +1,7 @@
 # Create service account for tiller
 resource "kubernetes_service_account" "tiller" { 
+  depends_on = [data.aws_eks_cluster.this]
+
   metadata { 
     name      = "tiller" 
     namespace = "kube-system" 
