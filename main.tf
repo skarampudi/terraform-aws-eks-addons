@@ -1,5 +1,5 @@
 # create amazon namespace 
-resource "kubernetes_namespace" "amazon" { 
+resource "kubernetes_namespace" "amazon" {
   metadata { 
     name = "amazon" 
  
