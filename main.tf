@@ -36,5 +36,15 @@ resource "helm_release" "fluentd-cloudwatch" {
     name  = "rbac.create" 
     value = true 
   } 
+
+  set { 
+    name  = "rbac.serviceAccountName" 
+    value = "fluentd-cloudwatch" 
+  } 
  
+  set { 
+    name  = "rbac.serviceAccountAnnotations.eks\\.amazonaws\\.com/role-arn" 
+    value = aws_iam_role.fluentd_cloudwatch.arn 
+  }
+
 }
