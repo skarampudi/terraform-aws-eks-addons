@@ -3,7 +3,7 @@ resource "aws_iam_openid_connect_provider" "this" {
   depends_on = [data.aws_eks_cluster.this]
 
   client_id_list  = ["sts.amazonaws.com"] 
-  thumbprint_list = [] 
+  thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"] 
   url             = data.aws_eks_cluster.this.identity.0.oidc.0.issuer
 }
 
