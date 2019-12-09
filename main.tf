@@ -23,7 +23,7 @@ resource "helm_release" "fluentd-cloudwatch" {
   chart      = "fluentd-cloudwatch" 
   repository = data.helm_repository.incubator.metadata.0.name 
   namespace  = "amazon"
-  version    = "0.11.1" 
+  version    = "0.12.0" 
  
   set { 
     name  = "awsRegion" 
