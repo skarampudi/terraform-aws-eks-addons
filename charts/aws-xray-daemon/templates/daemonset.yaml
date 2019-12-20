@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ template "aws-xray-daemon.fullname" . }}
+  labels:
+    app: {{ template "aws-xray-daemon.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ template "aws-xray-daemon.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "aws-xray-daemon.name" . }}
+        release: "{{ .Release.Name }}"
+    spec:
+      serviceAccountName: {{ if .Values.rbac.create }}{{ template "aws-xray-daemon.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ template "aws-xray-daemon.fullname" . }}
+      hostNetwork: true
+      containers:
+      - name: {{ template "aws-xray-daemon.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        command: [ "/usr/bin/xray", "-c", "/aws/xray/config.yaml" ]
+        env:
+        - name: AWS_REGION
+          value: {{ .Values.awsRegion }}
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        ports:
+        - name: xray-ingest
+          containerPort: 2000
+          hostPort: 2000
+          protocol: UDP
+        volumeMounts:
+        - name: config-volume
+          mountPath: /aws/xray
+          readOnly: true
