@@ -12,7 +12,6 @@ provider "kubernetes" {
 
 provider "helm" { 
   install_tiller  = true 
-  tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.16.1" 
   service_account = "tiller"
 
   kubernetes { 
