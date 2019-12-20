@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "aws-xray-daemon.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "aws-xray-daemon.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+spec:
+  selector:
+    app: {{ template "aws-xray-daemon.name" . }}
+  clusterIP: None
+  ports:
+  - name: incoming
+    port: 2000
+    protocol: UDP

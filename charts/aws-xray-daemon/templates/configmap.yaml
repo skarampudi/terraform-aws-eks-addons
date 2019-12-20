@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "aws-xray-daemon.fullname" . }}
+  labels:
+    app: {{ template "aws-xray-daemon.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+data:
+{{ toYaml .Values.data | indent 2 }}

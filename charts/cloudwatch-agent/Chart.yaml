@@ -1,0 +1,16 @@
+apiVersion: v1
+name: cloudwatch-agent
+version: 0.1.0
+appVersion: cloudwatch-agent:1.230621.0
+description: Helm chart for deploy and congfigure CloudWatch Agent
+ for container insights in eks.
+home: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html
+keywords:
+- cloudwatch-agent
+- monitoring
+sources:
+- https://hub.docker.com/r/amazon/cloudwatch-agent
+maintainers:
+- name: sriharsha
+  email: sriharsha@karampudi.me
+engine: gotpl

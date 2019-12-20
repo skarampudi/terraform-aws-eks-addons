@@ -1,0 +1,23 @@
+######################## 
+# .gitattributes 
+######################## 
+ 
+# gitattributes - defining attributes per path 
+ 
+# Documentation: 
+#   https://git-scm.com/docs/gitattributes 
+ 
+# Useful Templates 
+#   https://github.com/Danimoth/gitattributes 
+ 
+# Auto detect text files and perform LF normalization 
+# http://davidlaing.com/2012/09/19/customise-your-gitattributes-to-become-a-git-ninja/ 
+* text=auto 
+ 
+# Ensure that the files we typically work on are consistent w.r.t line endings 
+*.json text eol=lf 
+*.py   text eol=lf 
+*.sh   text eol=lf 
+*.yaml text eol=lf 
+ 
+######################################################################## 
